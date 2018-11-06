@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+int lis(int * arr, int size)
+{
+	int res[size];
+	for(int i=0;i<size;i++)
+	res[i]=0;
+	res[0]=1;
+	for(int i=0;i<size;i++)
+	{
+		for(int j=0;j<i;j++)
+		{
+			if(arr[i]>arr[j] && res[i]<res[j]+1)
+			res[i] = res[j]+1;
+		}
+	}
+	cout << *max_element(res, res+size);
+}
+int main()
+{
+	int arr[] = { 1,2,3,4,55,34,22,11,1};
+	int result = lis(arr, sizeof(arr)/sizeof(arr[0]));
+	return 0;
+}
